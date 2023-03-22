@@ -1,9 +1,23 @@
 <template>
-  <h1>Products Page</h1>
+  <h1>Products</h1>
+  <div class='grid-wrap'>
+    <div v-for="product in products" v-bind:key="product.id" class='product-item'>
+      <img v-bind:src='product.imageName' />
+      <h3 class='product-name'>{{ product.name }}</h3>
+      <p class='product-price'>{{ product.price }}</p>
+      <button>View Details</button>
+    </div>
+  </div>
 </template>
 
 <script>
+import { products } from '../temp-data';
 export default {
-  name: "ProductsPage"
+  name: "ProductsPage",
+  data() {
+    return {
+      products
+    }
+  }
 }
 </script>
