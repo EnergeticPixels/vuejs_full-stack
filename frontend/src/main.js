@@ -2,9 +2,9 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import * as VueRouter from 'vue-router';
 import './main.css';
-import ShoppingCartPage from './pages/ShoppingCartPage';
-import ProductsPage from './pages/ProductsPages';
-import ProductDetailPage from './pages/ProductDetailPage';
+import ShoppingCartPage from './pages/ShoppingCartPage.vue';
+import ProductsPage from './pages/ProductsPages.vue';
+import ProductDetailPage from './pages/ProductDetailPage.vue';
 
 
 createApp(App)
@@ -20,8 +20,8 @@ createApp(App)
         component: ProductsPage
       },
       {
-        path: '/products/:productId',
-        compoonent: ProductDetailPage
+        path: "/products/:productId",
+        component: ProductDetailPage
       }
     ]
   }))
