@@ -5,6 +5,7 @@ import './main.css';
 import ShoppingCartPage from './pages/ShoppingCartPage.vue';
 import ProductsPage from './pages/ProductsPages.vue';
 import ProductDetailPage from './pages/ProductDetailPage.vue';
+import NotFoundPage from './pages/NotFoundPage.vue';
 
 
 createApp(App)
@@ -22,6 +23,10 @@ createApp(App)
       {
         path: "/products/:productId",
         component: ProductDetailPage
+      },
+      {
+        path: '/:pathMatch(.*)*',
+        component: NotFoundPage
       }
     ]
   }))
