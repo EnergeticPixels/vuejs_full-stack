@@ -1,0 +1,185 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "VueJS Full Stack LL",
+    "dateExported": "2023-06-19T20:26:19.388Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c574e3fc-3b69-49a8-86ee-bef2a704580c",
+            "colId": "43568244-5f6c-4496-9657-913129d07036",
+            "containerId": "",
+            "name": "FullStackAPI Hello route",
+            "url": "http://localhost:8000/hello",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-19T19:57:57.781Z",
+            "modified": "2023-06-19T19:57:57.781Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "res-body",
+                    "custom": "",
+                    "action": "contains",
+                    "value": "Hello"
+                },
+                {
+                    "type": "Content-Type",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "text/html; charset=utf-8"
+                }
+            ]
+        },
+        {
+            "_id": "715b7a6a-ef6b-4125-9fb7-754c17637a41",
+            "colId": "43568244-5f6c-4496-9657-913129d07036",
+            "containerId": "",
+            "name": "Get All Products",
+            "url": "http://localhost:8000/products",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-06-19T20:17:44.957Z",
+            "modified": "2023-06-19T20:17:44.957Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "res-body",
+                    "custom": "",
+                    "action": "isjson",
+                    "value": "true"
+                }
+            ]
+        },
+        {
+            "_id": "e104da39-0098-4892-9791-c54fd8f43673",
+            "colId": "43568244-5f6c-4496-9657-913129d07036",
+            "containerId": "",
+            "name": "Get all items in cart",
+            "url": "http://localhost:8000/cart",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-19T20:18:48.669Z",
+            "modified": "2023-06-19T20:18:48.669Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "res-body",
+                    "custom": "",
+                    "action": "isjson",
+                    "value": "true"
+                }
+            ]
+        },
+        {
+            "_id": "897a7680-0e9b-4e23-8a90-6cee90fcc738",
+            "colId": "43568244-5f6c-4496-9657-913129d07036",
+            "containerId": "",
+            "name": "Get a single product",
+            "url": "http://localhost:8000/products/123",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-06-19T20:21:05.133Z",
+            "modified": "2023-06-19T20:21:05.133Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "res-body",
+                    "custom": "",
+                    "action": "isjson",
+                    "value": "true"
+                },
+                {
+                    "type": "res-body",
+                    "custom": "",
+                    "action": "contains",
+                    "value": "Basil"
+                }
+            ]
+        }
+    ]
+}
