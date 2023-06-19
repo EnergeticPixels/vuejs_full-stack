@@ -11,12 +11,17 @@ app.get('/hello', (req, res) => {
   res.send('Hello')
 });
 
+function populateCartId(ids) {
+  return ids.map(id => products.find(product => product.id === id));
+};
+
 app.get('/products', (req, res) => {
   res.json(products);
 });
 
 app.get('/cart', (req, res) => {
-  res.json(cartItems);
+  const populatedCart = populateCartId(cartItems);
+  res.json(populatedCart);
 });
 
 app.get('/products/:productId', (req, res) => {
@@ -27,15 +32,16 @@ app.get('/products/:productId', (req, res) => {
 
 app.post('/cart', (req, res) => {
   const productId = req.body.id;
-  const product = products.find(product => product.id === productId);
-  cartItems.push(product);
-  res.json(cartItems);
+  cartItems.push(productId);
+  const populatedCart = populateCartId(cartItems);
+  res.json(populatedCart);
 })
 
 app.delete('/cart/:productId', (req, res) => {
   const productId = req.params.productId;
-  cartItems = cartItems.filter(product => product.id !== productId);
-  res.json(cartItems);
+  cartItems = cartItems.filter(id => id !== productId);
+  const populatedCart = populateCartId(cartItems);
+  res.json(populatedCart);
 })
 
 app.listen(8000, () => {

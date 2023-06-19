@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "VueJS Full Stack LL",
-    "dateExported": "2023-06-19T20:26:19.388Z",
+    "dateExported": "2023-06-19T21:21:57.205Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -180,6 +180,66 @@
                     "value": "Basil"
                 }
             ]
+        },
+        {
+            "_id": "0c506dc1-abc4-4f8d-a254-80d14710c134",
+            "colId": "43568244-5f6c-4496-9657-913129d07036",
+            "containerId": "",
+            "name": "Adds 1 item to Cart",
+            "url": "http://localhost:8000/cart",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-06-19T20:52:33.701Z",
+            "modified": "2023-06-19T21:19:18.266Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": \"345\"\n}",
+                "form": []
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "res-body",
+                    "custom": "",
+                    "action": "isjson",
+                    "value": "true"
+                }
+            ]
+        },
+        {
+            "_id": "908cbd8f-e388-45ef-a541-ee50ccc50950",
+            "colId": "43568244-5f6c-4496-9657-913129d07036",
+            "containerId": "",
+            "name": "Delete an Item from Cart",
+            "url": "http://localhost:8000/cart/345",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-06-19T20:59:44.605Z",
+            "modified": "2023-06-19T21:19:31.170Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0ca60a36-64d0-41a6-972e-e670f94ad27e",
+            "colId": "43568244-5f6c-4496-9657-913129d07036",
+            "containerId": "",
+            "name": "Refactored Get All Items in Cart",
+            "url": "http://localhost:8000/cart",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-06-19T21:09:56.877Z",
+            "modified": "2023-06-19T21:09:56.877Z",
+            "headers": [],
+            "params": [],
+            "tests": []
         }
     ]
 }
