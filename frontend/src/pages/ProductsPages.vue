@@ -19,6 +19,7 @@ export default {
   },
   async created() {
     const response = await axios.get('/api/products');
+    console.log(response);
     const products = response.data;
     this.products = products;
   }

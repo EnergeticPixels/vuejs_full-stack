@@ -2,6 +2,8 @@ import express from 'express';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 //import { cartItems as cartItemsRaw, products as productsRaw } from './data/temp-data.js';
 
+import path from 'node:path';
+
 
 //let cartItems = cartItemsRaw;
 //let products = productsRaw;
@@ -36,6 +38,7 @@ async function start() {
 
   const app = express();
   app.use(express.json());
+  app.use('./images', express.static(path.join(`/assets`)));
 
   app.get('/api/hello', async (req, res) => {
     res.send('Hello');

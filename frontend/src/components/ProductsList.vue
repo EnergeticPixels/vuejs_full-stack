@@ -1,7 +1,7 @@
 <template>
   <div class='grid-wrap'>
     <div v-for="product in products" v-bind:key="product.id" class='product-item'>
-      <img v-bind:src='product.imageName' />
+      <img v-bind:src='product.imageUrl' />
       <h3 class='product-name'>{{ product.name }}</h3>
       <p class='product-price'>{{ product.price }}</p>
       <router-link :to="'/products/' + product.id">

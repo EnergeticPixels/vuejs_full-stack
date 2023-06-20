@@ -1,7 +1,7 @@
 <template>
   <div v-if='product'>
     <div class='img-wrap'>
-      <img v-bind:src='product.imageName' />
+      <img v-bind:src='product.imageUrl' />
     </div>
     <div class='product-details'>
       <h1>{{ product.name }}</h1>
