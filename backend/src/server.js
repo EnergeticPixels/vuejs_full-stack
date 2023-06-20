@@ -32,28 +32,35 @@ const app = express();
 app.use(express.json());
 
 app.get('/hello', async (req, res) => {
+  res.send('Hello');
+});
+
+async function populateCartId(ids) {
+  await client.connect();
+  const db = client.db('fullStackAPI');
+  return Promise.all(ids.map(id => db.collection('products').findOne({ id })));
+};
+
+app.get('/products', async (req, res) => {
   await client.connect();
   const db = client.db('fullStackAPI');
   const products = await db.collection('products').find({}).toArray();
-  res.send(products)
+  res.send(products);
 });
 
-function populateCartId(ids) {
-  return ids.map(id => products.find(product => product.id === id));
-};
-
-app.get('/products', (req, res) => {
-  res.json(products);
-});
-
-app.get('/cart', (req, res) => {
-  const populatedCart = populateCartId(cartItems);
+app.get('/users/:userId/cart', async (req, res) => {
+  await client.connect();
+  const db = client.db('fullStackAPI');
+  const user = await db.collection('users').findOne({ id: req.params.userId });
+  const populatedCart = await populateCartId(user.cartItems);
   res.json(populatedCart);
 });
 
-app.get('/products/:productId', (req, res) => {
+app.get('/products/:productId', async (req, res) => {
+  await client.connect();
+  const db = client.db('fullStackAPI');
   const productId = req.params.productId;
-  const product = products.find(product => product.id === productId);
+  const product = await db.collection('products').findOne({ id: productId });
   res.json(product)
 });
 
