@@ -16,17 +16,23 @@
 </template>
 
 <script>
-import { products } from '../temp-data';
+import axios from 'axios';
+// import { products } from '../temp-data';
 import NotFoundPage from './NotFoundPage';
 export default {
   name: "ProductDetail",
   data() {
     return {
-      product: products.find(product => product.id === this.$route.params.productId)
+      product: {}
     }
   },
   components: {
     NotFoundPage
+  },
+  async created() {
+    const response = await axios.get(`/api/products/${this.$route.params.productId}`);
+    const product = response.data;
+    this.product = product;
   }
 }
 </script>
