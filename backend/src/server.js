@@ -1,19 +1,11 @@
 import express from 'express';
 import { MongoClient, ServerApiVersion } from 'mongodb';
-import { cartItems as cartItemsRaw, products as productsRaw } from './data/temp-data.js';
+//import { cartItems as cartItemsRaw, products as productsRaw } from './data/temp-data.js';
 
-const uri = "mongodb+srv://energeticpixels:I4AAkWpOTbyStr5y@cluster0.jjeualx.mongodb.net/?retryWrites=true&w=majority"
 
-let cartItems = cartItemsRaw;
-let products = productsRaw;
+//let cartItems = cartItemsRaw;
+//let products = productsRaw;
 
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true
-  }
-});
 
 async function testDBconn() {
   try {
@@ -28,57 +20,66 @@ async function testDBconn() {
   }
 };
 
-const app = express();
-app.use(express.json());
+async function start() {
 
-app.get('/hello', async (req, res) => {
-  res.send('Hello');
-});
+  const uri = "mongodb+srv://energeticpixels:I4AAkWpOTbyStr5y@cluster0.jjeualx.mongodb.net/?retryWrites=true&w=majority";
+  const client = new MongoClient(uri, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true
+    }
+  });
 
-async function populateCartId(ids) {
   await client.connect();
   const db = client.db('fullStackAPI');
-  return Promise.all(ids.map(id => db.collection('products').findOne({ id })));
-};
 
-app.get('/products', async (req, res) => {
-  await client.connect();
-  const db = client.db('fullStackAPI');
-  const products = await db.collection('products').find({}).toArray();
-  res.send(products);
-});
+  const app = express();
+  app.use(express.json());
 
-app.get('/users/:userId/cart', async (req, res) => {
-  await client.connect();
-  const db = client.db('fullStackAPI');
-  const user = await db.collection('users').findOne({ id: req.params.userId });
-  const populatedCart = await populateCartId(user.cartItems);
-  res.json(populatedCart);
-});
+  app.get('/hello', async (req, res) => {
+    res.send('Hello');
+  });
 
-app.get('/products/:productId', async (req, res) => {
-  await client.connect();
-  const db = client.db('fullStackAPI');
-  const productId = req.params.productId;
-  const product = await db.collection('products').findOne({ id: productId });
-  res.json(product)
-});
+  async function populateCartId(ids) {
+    return Promise.all(ids.map(id => db.collection('products').findOne({ id })));
+  };
 
-app.post('/cart', (req, res) => {
-  const productId = req.body.id;
-  cartItems.push(productId);
-  const populatedCart = populateCartId(cartItems);
-  res.json(populatedCart);
-})
+  app.get('/products', async (req, res) => {
+    const products = await db.collection('products').find({}).toArray();
+    res.send(products);
+  });
 
-app.delete('/cart/:productId', (req, res) => {
-  const productId = req.params.productId;
-  cartItems = cartItems.filter(id => id !== productId);
-  const populatedCart = populateCartId(cartItems);
-  res.json(populatedCart);
-})
+  app.get('/users/:userId/cart', async (req, res) => {
+    const user = await db.collection('users').findOne({ id: req.params.userId });
+    const populatedCart = await populateCartId(user.cartItems);
+    res.json(populatedCart);
+  });
 
-app.listen(8000, () => {
-  //testDBconn();
-  console.log('Server is listening on port 8000')
-});
+  app.get('/products/:productId', async (req, res) => {
+    const productId = req.params.productId;
+    const product = await db.collection('products').findOne({ id: productId });
+    res.json(product);
+  });
+
+  app.post('/cart', (req, res) => {
+    const productId = req.body.id;
+    cartItems.push(productId);
+    const populatedCart = populateCartId(cartItems);
+    res.json(populatedCart);
+  });
+
+  app.delete('/cart/:productId', (req, res) => {
+    const productId = req.params.productId;
+    cartItems = cartItems.filter(id => id !== productId);
+    const populatedCart = populateCartId(cartItems);
+    res.json(populatedCart);
+  });
+
+  app.listen(8000, () => {
+    //testDBconn();
+    console.log('Server is listening on port 8000');
+  });
+}
+
+start();
