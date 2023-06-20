@@ -5,6 +5,16 @@ This is the repository for the LinkedIn Learning course Vue.js: Creating and Hos
 
 Do you have Vue.js front-end capabilities, but lack familiarity with the server side? Would you like to develop the skills needed to build full-stack applications? In this course, instructor Shaun Wassell helps you enhance your development tool kit by showing how to leverage your existing Vue.js skills to build a full-stack ecommerce site. Shaun guides you through the process, showing how to use Vue.js to build a simple front end; Node.js and MongoDB to construct the back end; Axios to communicate between the front and back ends; add authentication with Firebase Authentication; and finally, how to take it live. Along the way, learn how to work with different tools and frameworks to correctly configure your site, including Postman and Express.
 
+
+
+## Development resources (Outside)
+This project is almost done.  Still needs firebase setup for signin operations.
+Also, this project uses MongoDB Atlas as persisted data.
+All other operations of this site is good. Can now be used for all references
+used in coding outside of user signin operations.
+
+
+
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
 
