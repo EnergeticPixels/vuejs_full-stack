@@ -24,7 +24,8 @@ async function testDBconn() {
 
 async function start() {
 
-  const uri = "mongodb+srv://energeticpixels:I4AAkWpOTbyStr5y@cluster0.jjeualx.mongodb.net/?retryWrites=true&w=majority";
+  // make sure to correct the connection URI before launching this api
+  const uri = "mongodb+srv://energeticpixels:XXXXXXXXXXXXXXX@cluster0.XXXXXXXXXXXX.mongodb.net/?retryWrites=true&w=majority";
   const client = new MongoClient(uri, {
     serverApi: {
       version: ServerApiVersion.v1,
